@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <div >
-        <div className="h-128 w-full relative bg-gradient-to-br from-[#FAFFF7] to-[#9DD69A] to-[#75FF83] text-black">
+        <div className="h-128 w-full relative bg-gradient-to-br from-[#FAFFF7] to-[#9DD69A] text-black">
           <BMO />
         </div>
 
