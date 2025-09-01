@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "remixicon/fonts/remixicon.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,3 +16,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@theme {
+  --shadow-allBlack: 0 0 15px rgb(0,0,0,0.25);
+}
