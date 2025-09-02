@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react";
 
-function FeaturedCard() {
+function FeaturedCard({ title, subtext, cover }) {
   return (
     <>
-    <div className='bg-white min-w-128 md:w-128 sm:w-96 h-88 rounded-2xl shadow-2xl overflow-hidden flex flex-col items-center p-5'>
-        <img src="/img/game-content/cyberquest---futuristic-rpg-adventure-.jpg" className='h-66 rounded-xl' />
-        <div className='text-center p-2'>
-            <h1 className='text-xl font-semibold text-black'>CyberQuest</h1>
-            <p className='text-black font-semibold'>Futuristic RPG adventure.</p>
+      <div className="bg-gradient-to-bl from-[#616161] to-[#00784E] min-w-208 h-98 rounded-2xl shadow-2xl overflow-hidden snap-center flex items-center ">
+        <img src={cover} className="h-98 rounded-l-xl w-156" />
+        <div className=" p-2 flex flex-col h-full justify-between items-baseline ">
+          <div className="mt-5">
+            <h1 className="text-xl font-semibold">{title}</h1>
+            <p className=" font-semibold">{subtext}</p>
+          </div>
+
+          <button className="w-full bg-green-400 duration-150 rounded-md font-bold text-black mt-5 p-2  hover:outline-4 hover:outline-green-300 hover:bg-green-700 hover:text-white mb-2">
+            Read more <i className="ri-external-link-fill"></i>
+          </button>
         </div>
-    </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default FeaturedCard
+export default FeaturedCard;

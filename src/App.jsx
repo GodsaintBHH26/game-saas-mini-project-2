@@ -12,6 +12,9 @@ import AppLayout from "./components/layout/AppLayout";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
+import Pricing from "./components/pages/Pricing";
+import Games from "./components/pages/Games";
+import UserProfile from "./components/pages/UserProfile";
 
 function App() {
   const location = useLocation();
@@ -33,6 +36,18 @@ function App() {
       path: "/signup",
       element: <Signup />,
     },
+    {
+      path:'/pricing',
+      element:<Pricing/>
+    },
+    {
+      path:'/games',
+      element:<Games/>
+    },
+    {
+      path:'/profile',
+      element:<UserProfile/>
+    }
   ];
 
   const state = location.state;

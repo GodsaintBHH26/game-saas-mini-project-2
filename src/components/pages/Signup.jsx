@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useFirebase } from "../../context/Firebase";
 
 function Signup() {
-  const firebase=useFirebase()
-  const [email, setEmail]=useState(null)
-  const [password, setPassword]=useState(null)
+  const firebase = useFirebase();
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (firebase.user) {
+      close();
+    }
+  });
   const close = () => {
     navigate(-1);
   };
   return (
     <>
       <div className="inset-0 z-50 fixed flex justify-center items-center">
-        <div className="absolute backdrop-blur-sm inset-0 bg-black/10" onClick={close}></div>
+        <div
+          className="absolute backdrop-blur-sm inset-0 bg-black/10"
+          onClick={close}
+        ></div>
         <div className="relative w-96  mt-5 bg-white rounded-2xl text-black shadow-allBlack p-5 ">
           <div className="text-center">
             <h1 className="text-4xl font-bold ">Register</h1>
@@ -36,7 +44,7 @@ function Signup() {
                 placeholder="Enter Your Email"
                 value={email}
                 className="bg-white outline-2 w-72 h-8 rounded outline-gray-600 focus:outline-blue-500 focus:outline-4 p-2 m-1"
-                onChange={e=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -49,7 +57,7 @@ function Signup() {
                 placeholder="Enter Your Password"
                 value={password}
                 className="bg-white outline-2 w-72 h-8 rounded outline-gray-600 focus:outline-blue-500 focus:outline-4 p-2 m-1"
-                onChange={e=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="">
                 <input
@@ -60,10 +68,13 @@ function Signup() {
               </label>
             </div>
 
-            <button type='button'
-             className="mt-3 bg-amber-500 rounded-lg w-full p-3 text-xl text-white" onClick={()=>{
-              firebase.signUpWithEmail({email, password})
-            }}>
+            <button
+              type="button"
+              className="mt-3 bg-amber-500 rounded-lg w-full p-3 text-xl text-white"
+              onClick={() => {
+                firebase.signUpWithEmail({ email, password });
+              }}
+            >
               Submit
             </button>
           </form>

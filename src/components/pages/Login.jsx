@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useFirebase } from "../../context/Firebase";
 
@@ -10,12 +10,17 @@ function Login() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (firebase.user) {
+      close();
+    }
+  });
   const close = () => {
     navigate(-1);
   };
   return (
     <>
-      <div className="inset-0 z-50  fixed flex justify-center items-center">
+      <div className="inset-0 z-50 fixed flex justify-center items-center">
         <div
           className="absolute backdrop-blur-sm inset-0 bg-black/10"
           onClick={close}
@@ -39,7 +44,7 @@ function Login() {
                 placeholder="Enter Your Email"
                 value={email}
                 className="bg-white outline-2 w-72 h-8 rounded outline-gray-600 focus:outline-blue-500 focus:outline-4 p-2 m-1"
-                onChange={e=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -55,7 +60,7 @@ function Login() {
                 placeholder="Enter Your Password"
                 value={password}
                 className="bg-white outline-2 w-72 h-8 rounded outline-gray-600 focus:outline-blue-500 focus:outline-4 p-2 m-1"
-                onChange={e=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="">
                 <input
@@ -66,7 +71,13 @@ function Login() {
                 Show Password
               </label>
             </div>
-            <button className=" bg-amber-500 rounded-lg w-full p-3 text-xl text-white" type="button" onClick={()=>{firebase.logInwithEmail({email, password})}}>
+            <button
+              className=" bg-amber-500 rounded-lg w-full p-3 text-xl text-white"
+              type="button"
+              onClick={() => {
+                firebase.logInwithEmail({ email, password });
+              }}
+            >
               Submit
             </button>
           </form>
