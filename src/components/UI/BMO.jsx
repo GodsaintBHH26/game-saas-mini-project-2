@@ -3,11 +3,24 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
 function BMO() {
+
+  const splineRef = useRef(null);
+
+  const handleHover = (hand, state) => {
+    if (!splineRef.current) return;
+
+    const obj = splineRef.current.findObjectByName(hand);
+    if (obj) {
+      // switch to the state you defined in Spline Editor
+      obj.setState(state);
+    }
+  };
+
   return (
     <div className="flex justify-around w-full h-128">
       <div className="z-10 flex flex-col h-full justify-between">
         <Link to="/games">
-          <div className="bg-emerald-400 w-40 h-36 rounded-2xl m-5 hover:outline-2 outline-black shadow-allBlack p-5">
+          <div className="bg-emerald-400 w-40 h-36 rounded-2xl m-5 hover:outline-2 outline-black shadow-allBlack p-5" onMouseEnter={() => handleHover("LeftHand", "Top")}>
             <h1 className="text-2xl font-semibold">Games</h1>
             <p className="p-2 text-sm">Checkout Available games</p>
           </div>
@@ -20,8 +33,8 @@ function BMO() {
         </Link>
       </div>
       <Spline
-        scene="https://prod.spline.design/eZIZxl6IyiQyhNWQ/scene.splinecode"
-        className=" absolute top-0 z-0 drop-shadow-2xl"
+        scene='/model/bmo_model.spline'
+        className=" absolute top-0 z-0 drop-shadow-2xl "
       />
       <div className="z-10 flex flex-col h-full justify-between">
         <Link to="/games">
