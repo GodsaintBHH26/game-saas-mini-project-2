@@ -23,7 +23,7 @@ function UserProfile() {
       <div className="bg-emerald-500 w-full h-full p-5">
         <div className="p-5 flex gap-5">
           <img
-            src="public/img/profile-pic/random-gamer-profile-picture-22.jpg"
+            src="/img/profile-pic/random-gamer-profile-picture-22.jpg"
             className="h-36 border-2 border-black hover:border-white duration-150"
           />
           <div className="flex items-center gap-2">
